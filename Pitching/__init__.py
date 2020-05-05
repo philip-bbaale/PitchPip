@@ -19,7 +19,6 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
-https://github.com/scrupycoco/PitchPip.git
 
 photos = UploadSet('photos',IMAGES)
 configure_uploads(app,photos)
