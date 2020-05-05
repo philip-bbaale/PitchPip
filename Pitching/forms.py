@@ -34,7 +34,6 @@ class LoginForm(FlaskForm):
 class UpdateProfile(FlaskForm):
     bio = StringField('Tell us about you.',validators = [DataRequired()])
     submit = SubmitField('Submit')
-    <!!!>
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
