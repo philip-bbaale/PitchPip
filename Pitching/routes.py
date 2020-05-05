@@ -93,7 +93,6 @@ def update_pic(uname):
         user.image_file = path
         db.session.commit()
     return redirect(url_for('account',uname=uname))
-    <!!!>
 
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
