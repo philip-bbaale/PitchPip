@@ -22,7 +22,6 @@ login_manager.login_message_category = 'info'
 
 photos = UploadSet('photos',IMAGES)
 configure_uploads(app,photos)
-https://github.com/scrupycoco/PitchPip.git
 
 
 from Pitching import routes
