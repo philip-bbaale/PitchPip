@@ -63,7 +63,6 @@ def account(uname):
     if user is None:
         abort(404)
     return render_template('account.html', title='Account', user = user)
-    <!!!>
 
 @app.route('/account/<uname>/update',methods = ['GET','POST'])
 @login_required
