@@ -58,8 +58,6 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-
-
 @app.route("/account/<uname>")
 @login_required
 def account(uname):
@@ -68,6 +66,7 @@ def account(uname):
         abort(404)
     posts = Post.query.filter_by(user_id=current_user.id).all()
     return render_template('account.html', title='Account', user = user, posts=posts)
+
 
 @app.route('/account/<uname>/update',methods = ['GET','POST'])
 @login_required

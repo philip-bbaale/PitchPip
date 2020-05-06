@@ -42,16 +42,17 @@
   
     
 </div>
-
+<br><br>
 <div class="row">
+  <h1>Your Pitches</h1>
   {% for post in posts %}
   <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-8">
         <div class="card-body">
-            <a class="mr-2 card-title" href="#">{{ post.author.username }}</a>
+            <span class="mr-2 card-title" href="#">{{ post.author.username }}</span>
             <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-            <h2 class="article-title">{{ post.title }}</h2>
+            <h2><a class="article-title text-primary" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
             <hr>
             <p class="article-content">{{ post.content }}</p>
         </div>
