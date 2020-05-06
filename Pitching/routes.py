@@ -66,7 +66,8 @@ def account(uname):
     user = User.query.filter_by(username = uname).first()
     if user is None:
         abort(404)
-    return render_template('account.html', title='Account', user = user,)
+    posts = Post.query.filter_by(user_id=current_user.id).all()
+    return render_template('account.html', title='Account', user = user, posts=posts)
 
 @app.route('/account/<uname>/update',methods = ['GET','POST'])
 @login_required
