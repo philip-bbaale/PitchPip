@@ -165,3 +165,11 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+@app.route("/posts_by_category/<uname>")
+@login_required
+def posts_by_category(uname):
+    posts = Post.query.filter_by(category = uname).all()
+    
+    return render_template('posts_by_category', title='Posts By Category',  posts=posts)
+

@@ -29,6 +29,17 @@
               <a class="nav-item nav-link text-dark" href="{{ url_for('home') }}">Home</a>
               <a class="nav-item nav-link text-dark" href="{{ url_for('about') }}">About</a>
             </div>
+            <div class="navbar-nav mx-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pitch Categories</a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ url_for('posts_by_category',uname=Interview) }}">Interview</a>
+                  <a class="dropdown-item" href="{{ url_for('posts_by_category',uname=Motivation) }}">Motivation</a>
+                  <a class="dropdown-item" href="{{ url_for('posts_by_category',uname=Product) }}">Product</a>
+                  <a class="dropdown-item" href="{{ url_for('posts_by_category',uname=Promotion) }}">Promotion</a>
+                </div>
+            </li>
+            </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if current_user.is_authenticated %}
