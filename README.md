@@ -5,7 +5,7 @@ Application to help you pitch.
 > PitchPip is an application that allows users to create one minute pitches. The users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them.
 
 # App Screenshot:
-<img src="https://github.com/scrupycoco/PitchPip/blob/master/Pitching/static/screenshot.png">
+<img src="https://github.com/scrupycoco/PitchPip/blob/master/Pitching/static/screenshot1.png">
 
 ## BDD
 | Behavior- Our program should handle: | Input Example- When it receives: | Output Example- It should return: |
