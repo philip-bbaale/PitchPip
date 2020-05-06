@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from Pitching import app, db, bcrypt, photos
-from Pitching.forms import RegistrationForm, LoginForm, UpdateProfile, PostForm
-from Pitching.models import User, Post
+from Pitching.forms import RegistrationForm, LoginForm, UpdateProfile, PostForm, CommentForm
+from Pitching.models import User, Post, Comment
 from flask_login import login_user, current_user, logout_user, login_required
 from Pitching.email import mail_message
 
@@ -29,7 +29,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to PitchPip","email/welcome_user",user.email,user=user)
+        mail_message("Welcome to postPip","email/welcome_user",user.email,user=user)
 
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
@@ -103,17 +103,39 @@ def update_pic(uname):
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        post = Post(title=form.title.data, content=form.content.data, category=form.category.data, author=current_user, upvotes=0, downvotes=0)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created', 'success')
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', form=form, legend='New Post')
 
-@app.route("/post/<int:post_id>")
+@app.route("/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title=post.title, post=post)
+
+    if request.args.get("upvote"):
+        post.upvotes += 1
+        db.session.add(post)
+        db.session.commit()
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    elif request.args.get("downvote"):
+        post.downvotes += 1
+        db.session.add(post)
+        db.session.commit()
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = form.text.data
+
+        new_comment = Comment(content = comment, post_id = post.id)
+
+        new_comment.save_comment()
+    comments = Post.get_comments(post)
+
+    return render_template('post.html', title=post.title, post=post, comments=comments, form=form)
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
@@ -143,4 +165,4 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
-
+<--->

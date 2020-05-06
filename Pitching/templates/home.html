@@ -11,7 +11,8 @@
               <div class="card-body">
                 <span class="mr-2 card-title font-italic font-weight-bolder">{{ post.author.username }}</span>
                 <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-                <h2><a class="article-title text-dark" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <h2><a class="article-title text-primary" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <h3 class="article-title">Category: {{ post.category }}</h3>
                 <hr>
                 <p class="article-content">{{ post.content }}</p>
               </div>
@@ -20,3 +21,4 @@
         </div>
     {% endfor %}
 {% endblock content %}
+<--->
