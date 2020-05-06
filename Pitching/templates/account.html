@@ -42,5 +42,23 @@
   
     
 </div>
+
+<!--div class="row">
+  {% for post in posts %}
+  <div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-8">
+        <div class="card-body">
+            <a class="mr-2 card-title" href="#">{{ post.author.username }}</a>
+            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            <h2 class="article-title">{{ post.title }}</h2>
+            <hr>
+            <p class="article-content">{{ post.content }}</p>
+        </div>
+        </div>
+    </div>
+  </div>
+  {% endfor %}
+</div-->
 </div>
 {% endblock %}

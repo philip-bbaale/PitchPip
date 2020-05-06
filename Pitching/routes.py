@@ -3,6 +3,7 @@ from Pitching import app, db, bcrypt, photos
 from Pitching.forms import RegistrationForm, LoginForm, UpdateProfile, PostForm
 from Pitching.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from Pitching.email import mail_message
 
 
 @app.route("/")
@@ -27,6 +28,9 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
+
+        mail_message("Welcome to PitchPip","email/welcome_user",user.email,user=user)
+
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
@@ -62,7 +66,7 @@ def account(uname):
     user = User.query.filter_by(username = uname).first()
     if user is None:
         abort(404)
-    return render_template('account.html', title='Account', user = user)
+    return render_template('account.html', title='Account', user = user,)
 
 @app.route('/account/<uname>/update',methods = ['GET','POST'])
 @login_required
