@@ -33,10 +33,10 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pitch Categories</a>
                 <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',uname=Interview) }}">Interview</a>
-                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',uname=Motivation) }}">Motivation</a>
-                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',uname=Product) }}">Product</a>
-                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',uname=Promotion) }}">Promotion</a>
+                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',postname=Interview) }}">Interview</a>
+                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',postname=Motivation) }}">Motivation</a>
+                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',postname=Product) }}">Product</a>
+                  <a class="dropdown-item" href="{{ url_for('main.posts_by_category',postname=Promotion) }}">Promotion</a>
                 </div>
             </li>
             </div>
@@ -55,7 +55,7 @@
         </div>
       </nav>
     </header>
-    <main role="main" class="container">
+    <main role="main" class="container ">
       <div class="row">
         <div class="col-md-12">
           {% with messages = get_flashed_messages(with_categories=true) %}

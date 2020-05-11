@@ -126,8 +126,8 @@ def delete_post(post_id):
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('main.home'))
 
-@main.route("/posts_by_category/<string:uname>")
-def posts_by_category(uname):
-    posts = Post.query.filter_by(category=uname).all()
+@main.route("/posts_by_category/<string:postname>")
+def posts_by_category(postname):
+    posts = Post.query.filter_by(category=postname).all()
     return render_template('posts_by_category', title='Posts By Category',  posts=posts)
 
