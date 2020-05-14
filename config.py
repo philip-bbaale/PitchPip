@@ -3,7 +3,7 @@ import os
 class Config:
     
     SECRET_KEY = '5791628bb0b13ce0c676dfde280ba245'
-    SQLALCHEMY_DATABASE_URI = 'postgres://dhtumlkriiojhv:659169ad1a2ce6c3895cdd695088ab8189eabd95353f84fb14ed6088723ea41c@ec2-52-202-146-43.compute-1.amazonaws.com:5432/dgsb76aacv5u8'
+    SQLALCHEMY_DATABASE_URI = 'postgres://zsaoexvbzfajsw:37be5cef0cff25b41be4e2b5419525b299ebc7c2d8808943ca8c822e0468045f@ec2-52-202-146-43.compute-1.amazonaws.com:5432/d9j96iod7o3ela'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     MAIL_SERVER = 'smtp.googlemail.com'
